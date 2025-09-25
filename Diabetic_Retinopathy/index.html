@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>Diabetic Retinopathy Analyzer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ai powered online tool to help GP's diagnose diabetic retinopathy.">
+
+
+
+<!--CSS Stylesheets-->
+<link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" href="css/child.css">
+
+<!--Link to Font Awesome icons-->
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css' integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns' crossorigin='anonymous'>
+
+
+
+<!--Link to fonts from google fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+<link rel="shortcut icon" type="image/png" href="robotfavicon.png">
+
+
+<style>
+body {
+	font-family: 'Noto Sans Thai', sans-serif;
+	background-color: #f0f2f5; /* สีพื้นหลังเหมือนหน้า Router */
+	color: #333;
+}
+.app-header {
+    background: #fff;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.brand { display: flex; align-items: center; gap: 1rem; }
+.logo { font-size: 2rem; }
+.brand h1 { font-size: 1.5rem; margin: 0; font-weight: 600; }
+.brand .subtitle { margin: 0; color: #666; }
+.chip {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 16px;
+    background-color: #e9ecef;
+    color: #495057;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+.chip:hover { background-color: #dee2e6; }
+.container {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+.panel {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.app-footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    color: #888;
+}
+</style>
+
+
+</head>
+
+
+<body>
+
+<header class="app-header">
+    <div class="brand">
+      <div class="logo">👁️</div>
+      <div>
+        <h1>Diabetic Retinopathy Analyzer</h1>
+        <p class="subtitle">วิเคราะห์เบาหวานขึ้นจอประสาทตา</p>
+      </div>
+    </div>
+    <nav class="quick-links">
+      <a href="../index.html" class="chip">← กลับไปที่ Router</a>
+    </nav>
+</header>
+
+<main class="container">
+	<section class="panel">
+		<!-- Front page image -->
+		<div class="w3-center w3-padding-bottom">
+			<img id="selected-image" class="w3-round adjust-image" src="assets/fundus_1.jpg" height="250" alt="Image for analysis"> 
+		</div> 
+
+		<!-- Button -->
+		<div id="btnn" class="w3-center">
+			<button class="w3-btn w3-deep-orange w3-hover-blue w3-round w3-margin-bottom adjust-spacing btn-font w3-padding w3-space-letters w3-text-white" onclick="setTimeout(simulateClick.bind(null, 'image-selector'), 200)"><i class='fas fa-camera w3-padding-right' style='font-size:15px'></i>
+				<b>วิเคราะห์เบาหวานขึ้นจอประสาทตา</b></button>
+		</div> 
+
+		<!-- Status and Progress Bar -->
+		<div class="w3-center w3-padding-small">
+			<div id="status-text" class="w3-text-teal space-letters">กำลังเริ่มระบบ...</div>
+			<div id="progress-container" class="w3-light-grey side-margin w3-round-large" style="display: none; margin-top: 8px;">
+				<div id="progress-bar" class="w3-container w3-blue w3-round-large" style="height:8px; width:0%"></div>
+			</div>
+		</div>
+
+		<!-- Results Box -->
+		<div class="w3-center w3-border add-margin side-margin w3-round w3-sand text-color space-letters bottom-margin dont-break-out">
+			<p>ผลลัพธ์</p>
+			<div id="prediction-list" class="w3-left-align w3-padding-small">
+				<p class="w3-text-grey w3-small">ผลลัพธ์จะแสดงที่นี่</p>
+			</div>
+		</div>
+	</section>
+</main>
+<footer class="app-footer">
+    <span>© 2025 แพลตฟอร์ม AI ทางการแพทย์</span>
+</footer>
+
+<!-- We simulate clicks on these two. -->
+<div class="hide">
+	<button id='predict-button'>Predict</button>
+</div>
+
+<div class="hide">
+	<input id="image-selector" type="file" multiple>
+</div>
+<!--===================================-->
+
+
+	<!-- Load jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+
+	</script>
+	
+	
+	<!-- Load TensorFlow.js
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.6.0/dist/tf.min.js"> 
+	</script>-->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.3/dist/tf.min.js"> 
+	</script>
+	
+	
+	<!-- Load the js files -->
+	<script src="jscript/target_classes.js"></script>
+	<script src="jscript/app_startup_code.js"></script>
+	<script src="jscript/app_batch_prediction_code.js"></script>
+	
+</body>
+</html>
