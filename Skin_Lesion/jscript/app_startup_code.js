@@ -36,7 +36,7 @@ let model;
 	setStatus('กำลังโหลดโมเดล...');
 	try {
 		model = await tf.loadModel(
-			'https://muaxzinn.github.io/sblt-cas/Skin_Lesion/final_model_kaggle_version1/model.json',
+			'https://muaxzinn.github.io/SBLT-CAS-Skin-Brain-Lung-Eye-Classification-and-Segmentation/Skin_Lesion/final_model_kaggle_version1/model.json',
 			{ onProgress: setProgress }
 		);
 		// เมื่อโหลดเสร็จ ให้ซ่อน Progress Bar และแสดงสถานะพร้อมใช้งาน
