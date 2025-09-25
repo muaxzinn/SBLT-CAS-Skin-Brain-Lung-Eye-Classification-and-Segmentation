@@ -28,7 +28,7 @@ let model;
 	try {
 		model = await tf.loadModel(
 			// This model path is a placeholder. Please update with the correct path.
-			'https://muaxzinn.github.io/sblt-cas/Diabetic_Retinopathy/model_dr_2/model.json',
+			'https://muaxzinn.github.io/SBLT-CAS-Skin-Brain-Lung-Eye-Classification-and-Segmentation/Diabetic_Retinopathy/model_dr_2/model.json',
 			{ onProgress: setProgress }
 		);
 		// เมื่อโหลดเสร็จ ให้ซ่อน Progress Bar และแสดงสถานะพร้อมใช้งาน
