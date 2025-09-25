@@ -1,0 +1,28 @@
+/* faq.css - สไตล์สำหรับหน้าคำถามที่พบบ่อย */
+
+.faq-section {
+  margin-bottom: 2.5rem;
+}
+
+.faq-section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-item {
+  margin-bottom: 1.5rem;
+}
+
+.faq-item dt {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.faq-item dd {
+  color: var(--color-text-secondary);
+  padding-left: 1rem;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SBLT-CAS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+  <!-- TFJS v4 -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+  <script defer src="./script.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="logo">🧠</div>
+      <div>
+        <h1>SBLT-CAS แพลตฟอร์ม AI ทางการแพทย์</h1>
+        <p class="subtitle">เราเตอร์ — ผิวหนัง · ตา · ปอด · สมอง</p>
+      </div>
+    </div>
+    <nav class="quick-links">
+      <a href="./Skin_Lesion/index.html" class="chip">ผิวหนัง</a>
+      <a href="./Diabetic_Retinopathy/index.html" class="chip">ตา</a>
+      <a href="./Lung/index.html" class="chip">ปอด</a>
+      <a href="./Intracranial_Hemorrhage/index.html" class="chip">สมอง</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>อัปโหลดภาพเพื่อตรวจเส้นทางโมเดล</h2>
+      <p class="muted">ลาก-วาง / คลิกเพื่อเลือกไฟล์ / วางภาพด้วย Ctrl/⌘+V</p>
+
+      <div id="dropzone" class="dropzone" tabindex="0">
+        <input id="fileInput" type="file" accept="image/*" hidden />
+        <div class="dropzone-inner">
+          <div class="dz-icon">🩺</div>
+          <div class="dz-text"><strong>ลาก-วางภาพที่นี่</strong><span>หรือคลิกเพื่อเลือกไฟล์</span></div>
+        </div>
+      </div>
+
+      <div id="previewWrap" class="preview-wrap hidden">
+        <img id="previewImg" alt="ตัวอย่างภาพ" />
+        <div class="preview-meta">
+          <span id="previewName"></span>
+          <button id="btnChange" class="btn secondary">เปลี่ยนภาพ</button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="btnPredict" class="btn primary" disabled>ทำนาย & ไปยังโมเดล</button>
+        <button id="btnClear" class="btn ghost" disabled>ล้าง</button>
+      </div>
+
+      <div id="status" class="status">
+        <div id="loader" class="loader hidden"></div>
+        <span id="statusText">กำลังเริ่มระบบ…</span>
+      </div>
+
+      <div id="progress" class="progress hidden">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>ผลการคัดเลือก (Router)</h2>
+      <div id="result" class="result">
+        <p class="muted">จะแสดงเปอร์เซ็นต์ความมั่นใจของแต่ละคลาสหลังทำนาย</p>
+      </div>
+
+      <div id="lowConfidence" class="fallback hidden">
+        <h3>ความมั่นใจต่ำ</h3>
+        <p class="muted">เลือกปลายทางด้วยตนเอง:</p>
+        <div class="fallback-grid">
+          <a class="card-link" href="./Skin_Lesion/index.html"><div class="card"><div class="card-icon">🧴</div><div class="card-title">ผิวหนัง</div></div></a>
+          <a class="card-link" href="./Diabetic_Retinopathy/index.html"><div class="card"><div class="card-icon">👁️</div><div class="card-title">ตา</div></div></a>
+          <a class="card-link" href="./Lung/index.html"><div class="card"><div class="card-icon">🫁</div><div class="card-title">ปอด</div></div></a>
+          <a class="card-link" href="./Intracranial_Hemorrhage/index.html"><div class="card"><div class="card-icon">🧠</div><div class="card-title">สมอง</div></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel soft">
+      <h2>คำเตือน</h2>
+      <p class="muted">เพื่อการศึกษา/วิจัย ไม่ใช่การวินิจฉัยแทนแพทย์</p>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>© 2025 แพลตฟอร์ม AI ทางการแพทย์</span><span>เราเตอร์ TF.js</span>
+  </footer>
+</body>
+</html>

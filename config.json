@@ -1,0 +1,40 @@
+{
+    "router": {
+      "path": "./router_model/good_model/model.json",
+      "labels": ["skin", "eye", "lung", "brain"],
+      "redirect": {
+        "skin": "./Skin_Lesion/Skin-Lesion-Analyzer-master/index.html",
+        "eye": "./Diabetic_Retinopathy/Diabetic-Retinopathy-Analyzer-master/index.html",
+        "lung": "./index.html",
+        "brain": "./Intracranial_Hemorrhage/Intracranial-Hemorrhage-Analyzer-master/index.html"
+      },
+      "minConfidence": 0.6
+    },
+    "models": {
+      "skin": {
+        "path": "./Skin_Lesion/Skin-Lesion-Analyzer-master/final_model_kaggle_version1/model.json",
+        "labels": "./Skin_Lesion/Skin-Lesion-Analyzer-master/jscript/target_classes.js"
+      },
+      "eye": {
+        "path": "./Diabetic_Retinopathy/Diabetic-Retinopathy-Analyzer-master/model/model.json",
+        "labels": "./Diabetic_Retinopathy/Diabetic-Retinopathy-Analyzer-master/jscript/eye_classes.js"
+      },
+      "lung_child": {
+        "path": "./Lung/Child_Pneumonia/Child-Pneumonia-Diagnoser-master/model_1/model.json",
+        "labels": "./Lung/Child_Pneumonia/Child-Pneumonia-Diagnoser-master/jscript/target_classes.js"
+      },
+      "lung_selection": {
+        "path": "./Lung/Lung_Segmenter_master/Lung-Segmenter-master/model_2/model.json",
+        "labels": "./Lung/Lung_Segmenter_master/Lung-Segmenter-master/jscript/classes.js"
+      },
+      "tb": {
+        "path": "./Lung/Tuberculosis/Tuberculosis-TB-Analyzer-master/model_tb_1/model.json",
+        "labels": "./Lung/Tuberculosis/Tuberculosis-TB-Analyzer-master/jscript/target_classes.js"
+      },
+      "brain": {
+        "path": "./Intracranial_Hemorrhage/Intracranial-Hemorrhage-Analyzer-master/model/model.json",
+        "labels": "./Intracranial_Hemorrhage/Intracranial-Hemorrhage-Analyzer-master/jscript/brain_classes.js"
+      }
+    }
+  }
+  
